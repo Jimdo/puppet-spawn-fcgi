@@ -1,4 +1,4 @@
-# Define : spawn-fcgi::php-pool
+# Define : spawn_fcgi::php_pool
 #
 # Define a spawn-fcgi pool snippet for php worker. Places all pool snippets into
 # /etc/spawn-fcgi, where they will be automatically loaded.
@@ -29,13 +29,13 @@
 #       Defaults to 'www-data'
 #
 # Sample Usage:
-#    spawn-fcgi::php-pool { "global":
+#    spawn_fcgi::php_pool { "global":
 #        ensure   => present,
 #        order    => '000',
 #        children => '15'
 #    }
 #
-define spawn-fcgi::php-pool (
+define spawn_fcgi::php_pool (
     $ensure         = 'present',
     $content        = '',
     $order          = '500',
@@ -49,7 +49,7 @@ define spawn-fcgi::php-pool (
     $user           = 'www-data',
     $group          = 'www-data') {
 
-    spawn-fcgi::pool { $name :
+    spawn_fcgi::pool { $name :
         ensure      => $ensure,
         pool_name   => 'php-pool',
         fcgi_app    => '/usr/bin/php-cgi',

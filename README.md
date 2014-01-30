@@ -1,34 +1,34 @@
-# spawn-fcgi module #
+# spawn\_fcgi module #
 Author	: Lars Fronius <lars@jimdo.com>
 
 Version	: 0.1
 
 Licence	: GPLv3
 
-Fully puppet-lint compliant module for configuring spawn-fcgi pools via puppet.
+Fully puppet-lint compliant module for configuring spawn\_fcgi pools via puppet.
 
 ## Intro ##
 ```
-This module installs spawn-fcgi.
+This module installs spawn_fcgi.
 It is fully tested on Debian Squeeze.
 
-It installs an init-script, which uses worker pool configs from /etc/spawn-fcgi/
+It installs an init-script, which uses worker pool configs from /etc/spawn_fcgi/
 
-Pool-Configuration is made by 'spawn-fcgi::pool' definition.
-There is a wrapper for php-pool definitions in 'spawn-fcgi::php-pool'
+Pool-Configuration is made by 'spawn_fcgi::pool' definition.
+There is a wrapper for php_pool definitions in 'spawn_fcgi::php_pool'
 
 See below for details.
 ```
-## Class: spawn-fcgi ##
+## Class: spawn\_fcgi ##
 ```
-This class manage spawn-fcgi installation and init.d placement.
-Use spawn-fcgi::pool or spawn-fcgi::php-pool for configuring spawn-fcgi worker pools.
+This class manage spawn_fcgi installation and init.d placement.
+Use spawn_fcgi::pool or spawn_fcgi::php_pool for configuring spawn_fcgi worker pools.
 ```
 
-## Define: spawn-fcgi::pool ##
+## Define: spawn\_fcgi::pool ##
 ```
-Defines spawn-fcgi pools. Places all pool snippets into
-/etc/spawn-fcgi, where they will be automatically loaded
+Defines spawn_fcgi pools. Places all pool snippets into
+/etc/spawn_fcgi, where they will be automatically loaded
 
 Parameters :
    * ensure: typically set to "present" or "absent".
@@ -36,8 +36,8 @@ Parameters :
    * pool_name: set name of pool, which is used to identify config template
        Defaults to 'pool'
    * content: set the content of the pool snippet.
-      Defaults to    'template("spawn-fcgi/pool.d/$pool_name.conf.erb")',
-      Undefined loads generic 'template("spawn-fcgi/pool.d/pool.conf.erb")'
+      Defaults to    'template("spawn_fcgi/pool.d/$pool_name.conf.erb")',
+      Undefined loads generic 'template("spawn_fcgi/pool.d/pool.conf.erb")'
    * order: specifies the load order for this pool snippet.
       Defaults to "500"
    * fcgi_app: set binary to load fcgi-procs from
@@ -59,12 +59,12 @@ Parameters :
       Defaults to 'www-data'
 ```
 
-## Define: spawn-fcgi::php-pool ##
+## Define: spawn\_fcgi::php\_pool ##
 ```
-Define : spawn-fcgi::php-pool
+Define : spawn_fcgi::php_pool
 
-Define a spawn-fcgi pool snippet for php worker. Places all pool snippets into
-/etc/spawn-fcgi, where they will be automatically loaded.
+Define a spawn_fcgi pool snippet for php worker. Places all pool snippets into
+/etc/spawn_fcgi, where they will be automatically loaded.
 
 Parameters :
    * ensure: typically set to "present" or "absent".
@@ -72,8 +72,8 @@ Parameters :
    * pool_name: set name of pool, which is used to identify config template
        Defaults to 'pool'
    * content: set the content of the pool snippet.
-      Defaults to    'template("spawn-fcgi/pool.d/$pool_name.conf.erb")',
-      Undefined loads generic 'template("spawn-fcgi/pool.d/pool.conf.erb")'
+      Defaults to    'template("spawn_fcgi/pool.d/$pool_name.conf.erb")',
+      Undefined loads generic 'template("spawn_fcgi/pool.d/pool.conf.erb")'
    * order: specifies the load order for this pool snippet.
       Defaults to "500"
    * ip: set the ip the fcgi pool should listen on
@@ -93,8 +93,8 @@ Parameters :
 ```
 ## Sample Usage ##
 ```
-   include spawn-fcgi
-   spawn-fcgi::php-pool { "global":
+   include spawn_fcgi
+   spawn_fcgi::php_pool { "global":
        ensure   => present,
        order    => '000',
        children => '15'

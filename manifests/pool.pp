@@ -1,4 +1,4 @@
-# Define : spawn-fcgi::pool
+# Define : spawn_fcgi::pool
 #
 # Define a spawn-fcgi pool snippet. Places all pool snippets into
 # /etc/spawn-fcgi, where they will be automatically loaded
@@ -32,7 +32,7 @@
 #       Defaults to 'www-data'
 #
 
-define spawn-fcgi::pool (
+define spawn_fcgi::pool (
     $ensure         = 'present',
     $content        = '',
     $order          = '500',
@@ -73,7 +73,7 @@ define spawn-fcgi::pool (
     }
 
     $real_content = $content ? {
-        ''          => template("spawn-fcgi/${real_pool_name}.erb"),
+        ''          => template("spawn_fcgi/${real_pool_name}.erb"),
         default     => $content,
     }
 

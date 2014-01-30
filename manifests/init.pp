@@ -1,11 +1,11 @@
-# Class: spawn-fcgi
+# Class: spawn_fcgi
 #
 # This class manage spawn-fcgi installation and configuration.
 #
-# Use spawn-fcgi::pool for configuring spawn-fcgi pools
-# Use spawn-fcgi::php-pool to configure a preconfigured php-pool
+# Use spawn_fcgi::pool for configuring spawn-fcgi pools
+# Use spawn_fcgi::php_pool to configure a preconfigured php-pool
 #
-class spawn-fcgi {
+class spawn_fcgi {
 
     package { 'spawn-fcgi': ensure => installed }
 
@@ -21,7 +21,7 @@ class spawn-fcgi {
         owner   => root,
         group   => root,
         mode    => '0755',
-        content => template('spawn-fcgi/init-spawn-fcgi.erb'),
+        content => template('spawn_fcgi/init-spawn-fcgi.erb'),
         require => Package['spawn-fcgi'],
     }
 

@@ -1,0 +1,3 @@
+fixtures:
+  symlinks:
+    "spawn_fcgi": "#{source_dir}"
